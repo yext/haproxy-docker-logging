@@ -5,10 +5,6 @@ HAProxy with logging to STDOUT
 
 This image uses latest Alpine-based HAProxy image, starts rsyslog and provides STDOUT logging. Access HAProxy logs through `docker logs -f <id or name of your container>`.
 
-### Supported tags and respective `Dockerfile` links
-
-* [latest, alpine, 2-alpine](https://github.com/mminks/haproxy-docker-logging/blob/master/Dockerfile)
-
 ### Configuration
 
 To use STDOUT logging with your Docker container, please use this snippet in your HAProxy config:
@@ -24,6 +20,26 @@ defaults
 ### Usage
 
 Please visit [official HAProxy repository](https://hub.docker.com/_/haproxy/) for information on how to use this image. It is pretty the same.
+
+### Deployment
+
+In order to generate a Dockerfile for a specific haproxy version, e.g. version 2.2, run:
+
+```
+VERSION=2.2 make generate
+```
+
+To build a Docker container image, specify a path to the registry:
+
+```
+VERSION=2.2 REGISTRY_PATH=foo/bar make generate build
+```
+
+To generate a config, build an image, and push it to a registry:
+
+```
+VERSION=2.2 REGISTRY_PATH=foo/bar make all
+```
 
 ### Example
 
@@ -47,6 +63,6 @@ docker kill -s SIGHUP haproxy
 
 ### Contribution
 
-I welcome any kind of contribution. Fork it or contact me. I appreciate any kind of help.
+This repository is a fork of [mminks/haproxy-docker-logging](https://github.com/mminks/haproxy-docker-logging).
 
 

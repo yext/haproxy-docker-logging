@@ -1,6 +1,4 @@
-FROM haproxy:alpine
-
-LABEL maintainer="Meik Minks <mminks@inoxio.de>"
+FROM haproxy:HAPROXY_VERSION-alpine
 
 RUN set -exo pipefail \
     && apk add --no-cache \
