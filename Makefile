@@ -5,7 +5,7 @@ generate:
 build:
 	test -n "$(VERSION)" # $$VERSION is not defined
 	echo Building to version $${VERSION}
-	docker build -t $${REGISTRY_PATH}:latest -t $${REGISTRY_PATH}:$${VERSION} .
+	docker build -t $${REGISTRY_PATH}:$${VERSION} .
 
 push:
 	test -n "$(REGISTRY_PATH)" # $$REGISTRY_PATH is not defined
