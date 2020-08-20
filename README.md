@@ -23,22 +23,28 @@ Please visit [official HAProxy repository](https://hub.docker.com/_/haproxy/) fo
 
 ### Deployment
 
+You must provide the following arguments to the Makefile:
+ * HAPROXY_VERSION: The version number of haproxy to be included in the image
+ * IMAGE_VERSION: The version number for the Docker image to be built
+ * REGISTRY: The path to the Docker registry to push to
+ * NAMESPACE: The namespace of the Docker registry in which `haproxy-docker-logging` will be placed.
+
 In order to generate a Dockerfile for a specific haproxy version, e.g. version 2.2, run:
 
 ```
-VERSION=2.2 make generate
+HAPROXY_VERSION=2.2 make generate
 ```
 
 To build a Docker container image, specify a path to the registry:
 
 ```
-VERSION=2.2 REGISTRY_PATH=foo/bar make generate build
+HAPROXY_VERSION=2.2 IMAGE_VERSION=1.0 REGISTRY=path.to/registry NAMESPACE=somenamespace make generate build
 ```
 
 To generate a config, build an image, and push it to a registry:
 
 ```
-VERSION=2.2 REGISTRY_PATH=foo/bar make all
+HAPROXY_VERSION=2.2 IMAGE_VERSION=1.0 REGISTRY=path.to/registry NAMESPACE=somenamespace make all
 ```
 
 ### Example
